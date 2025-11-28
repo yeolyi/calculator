@@ -764,7 +764,7 @@ class PaymentSystem {
       this.cancelCountdownInterval = null;
     }
 
-    let countdown = 3;
+    let countdown = 60;
     confirmBtn.disabled = true;
     confirmBtn.textContent = `그래도 해지하기(${countdown})`;
 

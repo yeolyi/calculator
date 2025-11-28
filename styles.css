@@ -988,12 +988,12 @@ h2 {
   }
 
   .payment-status > div {
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .cancel-subscription-btn {
-    align-self: center;
+    white-space: nowrap;
   }
 
   .dev-link {
