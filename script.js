@@ -233,6 +233,7 @@ class PaymentSystem {
     constructor() {
         this.selectedPlan = null;
         this.selectedPaymentMethod = 'card'; // 기본값으로 카드 선택
+        this.isProcessingPayment = false;
         this.initializeEventListeners();
         this.loadPaymentState();
     }
@@ -241,7 +242,9 @@ class PaymentSystem {
         // 모달 제어
         document.getElementById('close-modal').addEventListener('click', () => this.closeModal());
         document.getElementById('payment-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'payment-modal') this.closeModal();
+            if (e.target.id === 'payment-modal' && !this.isProcessingPayment) {
+                this.closeModal();
+            }
         });
 
         // 플랜 선택
@@ -318,6 +321,7 @@ class PaymentSystem {
     }
 
     disablePaymentUI(payButton, backButton, closeButton) {
+        this.isProcessingPayment = true;
         payButton.classList.add('loading');
         payButton.disabled = true;
         backButton.disabled = true;
@@ -326,6 +330,7 @@ class PaymentSystem {
     }
 
     enablePaymentUI(payButton, backButton, closeButton) {
+        this.isProcessingPayment = false;
         payButton.classList.remove('loading');
         payButton.disabled = false;
         backButton.disabled = false;
@@ -422,6 +427,9 @@ class PaymentSystem {
     }
 
     closeModal() {
+        if (this.isProcessingPayment) {
+            return; // 결제 진행 중에는 모달을 닫을 수 없음
+        }
         const modal = document.getElementById('payment-modal');
         modal.classList.remove('show');
         this.resetModal();
