@@ -290,8 +290,8 @@ h2 {
     color: #ff9500;
 }
 
-/* 등록된 카드 정보 */
-.registered-card {
+/* 감지된 카드 정보 */
+.detected-card {
     margin-bottom: 30px;
 }
 
@@ -332,10 +332,16 @@ h2 {
     font-size: 12px;
 }
 
-.card-dropdown {
-    color: #8e8e93;
-    font-size: 12px;
-    cursor: pointer;
+.card-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-icon {
+    color: #34c759;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 /* 버튼들 */
@@ -480,9 +486,30 @@ h2 {
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
     .calculator {
         width: 100%;
         max-width: 320px;
+        padding: 20px 15px 15px 15px;
+    }
+    
+    .display {
+        margin-bottom: 25px;
+        padding: 0 5px;
+    }
+    
+    .calculation {
+        font-size: 20px;
+        min-height: 25px;
+        margin-bottom: 8px;
+    }
+    
+    .result {
+        font-size: 48px;
+        min-height: 60px;
     }
     
     .btn {
@@ -491,21 +518,119 @@ h2 {
         font-size: 28px;
     }
     
-    .result {
-        font-size: 54px;
+    .btn.function {
+        font-size: 24px;
+    }
+    
+    .buttons {
+        gap: 10px;
     }
     
     .payment-content {
         width: 95%;
-        padding: 20px;
-        margin: 10% auto;
+        padding: 25px 20px;
+        margin: 5% auto;
     }
     
-    .payment-methods {
-        grid-template-columns: 1fr;
+    .modal-header {
+        margin-bottom: 25px;
+    }
+    
+    .modal-header h2 {
+        font-size: 22px;
+    }
+    
+    .modal-subtitle {
+        font-size: 13px;
+    }
+    
+    .plans {
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+    
+    .plan {
+        padding: 18px;
+    }
+    
+    .plan h3 {
+        font-size: 16px;
+    }
+    
+    .plan .price {
+        font-size: 20px;
+    }
+    
+    .plan .description {
+        font-size: 13px;
+    }
+    
+    .card-info {
+        padding: 18px;
+        gap: 12px;
+    }
+    
+    .card-name {
+        font-size: 15px;
+    }
+    
+    .card-number {
+        font-size: 13px;
+    }
+    
+    .card-type {
+        font-size: 11px;
+    }
+    
+    .selected-plan {
+        padding: 12px;
+        margin-bottom: 20px;
     }
     
     .payment-buttons {
         flex-direction: column;
+        gap: 12px;
+    }
+    
+    .continue-btn, .pay-btn, .close-btn, .back-btn {
+        padding: 12px 25px;
+        font-size: 15px;
+    }
+    
+    .success-icon {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+    
+    .debug-button {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .calculator {
+        max-width: 280px;
+    }
+    
+    .btn {
+        height: 60px;
+        width: 60px;
+        font-size: 26px;
+    }
+    
+    .btn.function {
+        font-size: 22px;
+    }
+    
+    .result {
+        font-size: 42px;
+    }
+    
+    .payment-content {
+        padding: 20px 15px;
     }
 }
