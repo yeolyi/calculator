@@ -805,20 +805,18 @@ class PaymentSystem {
       // 해지 처리 시뮬레이션 (2-3초)
       await new Promise((resolve) => setTimeout(resolve, 2500));
 
-      // 네트워크 오류 발생 시뮬레이션
-      throw new Error("Network error");
+      // 구독 해지 처리
+      this.clearPaymentState();
+      this.closeCancelSubscriptionModal();
+
+      // 페이지 새로고침으로 상태 업데이트
+      window.location.reload();
     } catch (error) {
       // 로딩 상태 제거
       if (confirmBtn) {
         confirmBtn.classList.remove("loading");
         confirmBtn.disabled = false;
       }
-
-      // 구독 해지 모달 닫기
-      this.closeCancelSubscriptionModal();
-
-      // 네트워크 오류 모달 표시 (해지 약관 동의 완료 메시지 포함)
-      this.showNetworkErrorModal(true);
     }
   }
 
